@@ -59,6 +59,7 @@ public class Student {
     student.totalRating = 0;
     student.studentsCount = 0;
     student.avgRating = 0.0;
+    student = null;
   }
 
   @Override
