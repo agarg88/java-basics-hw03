@@ -1,16 +1,28 @@
 public class Student {
   int rating;
   private String name;
-
-  // TODO implement Student class according to the instructions provided in the README.md file
+  private static int totalRating = 0;
+  private static int studentsCount = 0;
+  private static double avgRating = 0.0;
 
   public Student(String name) {
-    //TODO initialize name
+    this.name = name;
+    Student.studentsCount++;
+  }
+
+  public Student(String name, int rating) {
+    this.name = name;
+    this.rating = rating;
+    Student.studentsCount++;
   }
 
   public static double getAvgRating() {
-    // TODO return average rating of all students
-    return 0;
+    if (studentsCount == 0) {
+      return 0;
+    } else {
+      avgRating = (double) totalRating / studentsCount;
+      return avgRating;
+    }
   }
 
   public String getName() {
@@ -18,7 +30,7 @@ public class Student {
   }
 
   public void setName(String name) {
-    // TODO set student's name
+    this.name = name;
   }
 
   public int getRating() {
@@ -26,25 +38,31 @@ public class Student {
   }
 
   public void setRating(int rating) {
-    // TODO initialize rating;
+    this.rating = rating;
+    totalRating +=rating;
   }
 
   public boolean betterStudent(Student student) {
-    // TODO return the result of comparing this.student's rating with the student's rating
+    if (this.getRating() >= student.getRating()) {
+      return true;
+    } else
     return false;
   }
 
   public void changeRating(int rating) {
-    // TODO change this student's rating and average rating of all students
+    totalRating -=this.rating;
+    this.rating = rating;
+    totalRating +=rating;
   }
 
   public static void removeStudent(Student student) {
-    // TODO remove student
+    student.totalRating = 0;
+    student.studentsCount = 0;
+    student.avgRating = 0.0;
   }
 
   @Override
   public String toString() {
-    // TODO return String with name and rating of this student
-    return "";
+    return "Student's name is: " + this.getName() + " and student's rating is : " + this.getRating();
   }
 }

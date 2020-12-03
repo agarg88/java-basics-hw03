@@ -116,7 +116,7 @@ public class StudentTest {
 
     assertEquals(Student.getAvgRating(), 22.5d, "Average rating is wrong");
 
-    student2.changeRating(51);
+    student2.changeRating(51); //51 + 15 = 66/2 = 33
 
     assertEquals(Student.getAvgRating(), 33.0d, "Average rating is wrong");
   }
